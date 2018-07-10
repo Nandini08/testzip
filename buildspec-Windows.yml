@@ -12,4 +12,5 @@ phases:
         $env:Path
         $env:Path = "C:\tools\cygwin\bin;$env:Path"
         $env:Path
+        $env:CODEBUILD_SRC_DIR
         
