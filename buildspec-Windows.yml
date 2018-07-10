@@ -8,8 +8,8 @@ phases:
   build:
     commands:
       - |
-        '$env:DIRECTORY"
-        '$env:Path'
-        '$env:Path = "C:\tools\cygwin\bin;$env:Path'
-        '$env:Path'
+        $env:DIRECTORY
+        $env:Path
+        $env:Path = "C:\tools\cygwin\bin;$env:Path"
+        $env:Path
         
