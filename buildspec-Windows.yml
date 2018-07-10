@@ -1,26 +1,16 @@
 version: 0.2
 
-phases:
-  install:
-    commands:
-      - choco install jdk8 -params 'installdir=C:\\PROGRA~1\\Java\\jdk1.8' -y --no-progress
-      - choco install cyg-get maven 7zip -y --no-progress
-      - cyg-get bash patch bison flex make wget perl
+  env:
+  variables:
+      DIRECTORY: .\test
+      VALUE1: test
+      VALUE2: test2
 
+  phases:
   build:
-    commands:
+      commands:
       - |
-        $env:Path = "C:\tools\cygwin\bin;$env:Path"
-        cmd /c 'call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && bash -c "make all -j 4 BUILD_ENV=MSVC DOWNLOADER=wget JAVA_HOME=C:/PROGRA~1/Java/jdk1.8 CBMC_DIR=$env:CODEBUILD_SRC_DIR/lib/cbmc"'
+          $env:DIRECTORY
+          $env:CODEBUILD_SRC_DIR
+          cmd -/c call test.bat $env:VALUE1 $env:VALUE2
 
-  post_build:
-    commands:
-      - |
-        $env:Path = "C:\tools\cygwin\bin;$env:Path"
-        cmd /c 'call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64 && bash -c "make test BUILD_ENV=MSVC JAVA_HOME=C:/PROGRA~1/Java/jdk1.8 CBMC_DIR=$env:CODEBUILD_SRC_DIR/lib/cbmc"'
-
-artifacts:
-  files:
-
-cache:
-  paths:
