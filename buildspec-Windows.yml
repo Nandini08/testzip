@@ -1,16 +1,14 @@
-version: 0.2
-
-  env:
-  variables:
-      DIRECTORY: .\test
-      VALUE1: test
-      VALUE2: test2
-
-  phases:
-  build:
-      commands:
+--- 
+env: 
+  variables: 
+    DIRECTORY: .\test
+    VALUE1: test
+    VALUE2: test2
+phases: 
+  build: 
+    commands: 
       - |
           $env:DIRECTORY
           $env:CODEBUILD_SRC_DIR
           cmd -/c call test.bat $env:VALUE1 $env:VALUE2
-
+version: 0.2
