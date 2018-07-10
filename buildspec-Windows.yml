@@ -9,4 +9,5 @@ env:
 phases:
   build:
     commands:
-      - 'echo %SOLUTION%'
+      - '& Set-Location Env'
+      - '& Get-ChildItem'
