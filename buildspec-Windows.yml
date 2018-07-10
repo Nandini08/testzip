@@ -2,12 +2,14 @@ version: 0.2
 
 env:
   variables:
-    SOLUTION: .\CSharpHelloWorld.sln
-    PACKAGE_DIRECTORY: .\packages
-    DOTNET_FRAMEWORK: 4.6.2
+    DIRECTORY: .\test
 
 phases:
   build:
     commands:
-      - '& Set-Location Env'
-      - '& Get-ChildItem'
+      - |
+        '$env:DIRECTORY"
+        '$env:Path'
+        '$env:Path = "C:\tools\cygwin\bin;$env:Path'
+        '$env:Path'
+        
