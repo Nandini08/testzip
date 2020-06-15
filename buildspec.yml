@@ -6,6 +6,7 @@ phases:
       - BRANCH=$(git log -n 1 --pretty=%d HEAD | grep -o origin.* | sed s/\)//g | cut -d',' -f 1) 
       - echo $BRANCH
       - echo test
+      - ls -al
   post_build:
     commands:
       - echo Build completed on `date`
